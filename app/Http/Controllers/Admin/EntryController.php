@@ -2,12 +2,28 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
+//use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use Auth;
+use Request;
 class EntryController extends Controller
 {
+    public function index() {
+        return '后台';
+    }
     public function loginForm() {
         return view('admin.entry.login');
+    }
+    public function login() {
+        // config -> auth.php -> admin
+        $state = Auth::guard('admin')->attempt([
+            'username' => Request::input('username'),
+            'password' => Request::input('password')
+        ]);
+        if ($state) {
+            return redirect('admin/index');
+        }
+        //with: 暂存于session('error')
+        return redirect('admin/login')->with('error','用户名或密码错误');
     }
 }

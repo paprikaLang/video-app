@@ -34,6 +34,11 @@
                    class="form-control input-lg" placeholder="请输入密码" value="">
           </div>
         </div>
+        @if(session('error'))
+          <div class="alert alert-danger">
+            {{session('error')}}
+          </div>
+        @endif
         <button type="submit" class="btn btn-primary btn-lg">登录</button>
       </form>
     </div>
