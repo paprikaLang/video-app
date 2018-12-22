@@ -8,6 +8,11 @@ use Auth;
 use Request;
 class EntryController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin.auth')->except(['loginForm','login']);
+    }
+
     public function index() {
         return '后台';
     }
