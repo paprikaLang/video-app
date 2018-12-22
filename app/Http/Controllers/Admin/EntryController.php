@@ -14,7 +14,7 @@ class EntryController extends Controller
     }
 
     public function index() {
-        return '后台';
+        return view('admin.entry.index');
     }
     public function loginForm() {
         return view('admin.entry.login');
