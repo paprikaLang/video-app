@@ -7,4 +7,5 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function (){
     Route::post('/login','EntryController@login');
     //登录成功后的页面
     Route::get('/index', 'EntryController@index');
+    Route::get('/logout','EntryController@logout');
 });

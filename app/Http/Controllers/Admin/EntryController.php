@@ -31,4 +31,10 @@ class EntryController extends Controller
         //with: 暂存于session('error')
         return redirect('admin/login')->with('error','用户名或密码错误');
     }
+
+    public function logout()
+    {
+        Auth::guard('admin')->logout();
+        return redirect('/admin/login');
+    }
 }
