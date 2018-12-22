@@ -1,0 +1,13 @@
+dependencies:
+  hdjs: 4.0.16
+packages:
+  /hdjs/4.0.16:
+    dev: false
+    resolution:
+      integrity: sha1-RR8o3DrMvgJkUiLXL1hWdkNScqY=
+      tarball: 'http://registry.npm.taobao.org/hdjs/download/hdjs-4.0.16.tgz'
+registry: 'https://registry.npm.taobao.org/'
+shrinkwrapMinorVersion: 9
+shrinkwrapVersion: 3
+specifiers:
+  hdjs: ^4.0.16
