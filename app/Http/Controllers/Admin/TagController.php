@@ -61,9 +61,10 @@ class TagController extends CommonController
      * @param  \App\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tag $tag)
+    public function edit($id)
     {
-        //
+        $tag = Tag::find($id);
+        return view('admin.tag.edit', compact('tag'));
     }
 
     /**
@@ -73,9 +74,12 @@ class TagController extends CommonController
      * @param  \App\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tag $tag)
+    public function update(Request $request, $id)
     {
-        //
+        $tag = Tag::find($id);
+        $tag['tag_name'] = $request['tag_name'];
+        $tag->save();
+        return redirect('/admin/tag');
     }
 
     /**
