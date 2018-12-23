@@ -11,8 +11,7 @@
     <link href="/node_modules/appless/package/webuploader/jekyll/css/font-awesome.min.css" rel="stylesheet">
     <link href="/css/video.css" rel="stylesheet">
     <script>
-//APPLESS组件需要的配置
-hdjs = {
+        hdjs = {
     'base': '/node_modules/appless',
             'uploader': '/component/uploader',
             'filesLists': '/component/filesLists?',

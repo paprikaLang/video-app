@@ -10,4 +10,6 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function (){
     Route::get('/logout','EntryController@logout');
     Route::get('/changePassword', 'MyController@passwordForm');
     Route::post('/changePassword', 'MyController@changePassword');
+    //资源控制器Tag
+    Route::resource('tag','TagController');
 });
