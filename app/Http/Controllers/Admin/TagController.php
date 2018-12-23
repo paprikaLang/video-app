@@ -82,8 +82,9 @@ class TagController extends Controller
      * @param  \App\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tag $tag)
+    public function destroy($id)
     {
-        //
+        Tag::destroy($id);
+        return response()->json(['message'=>'删除成功', 'valid' => 1]);
     }
 }

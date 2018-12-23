@@ -7,20 +7,20 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
-    <link href="/node_modules/appless/package/webuploader/jekyll/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/node_modules/appless/package/webuploader/jekyll/css/font-awesome.min.css" rel="stylesheet">
-    <link href="/css/video.css" rel="stylesheet">
+    <link href="/node_modules/hdjs/package/webuploader/jekyll/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/node_modules/hdjs/package/webuploader/jekyll/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/hdjs.css" rel="stylesheet">
     <script>
         hdjs = {
-    'base': '/node_modules/appless',
+            'base': '/node_modules/hdjs',
             'uploader': '/component/uploader',
             'filesLists': '/component/filesLists?',
             'removeImage': '?s=component/upload/removeImage&m=member&siteid=18',
             'ossSign': '?s=component/oss/sign&m=member&siteid=18',
         };
     </script>
-    <script src="/node_modules/appless/require.js"></script>
-    <script src="/node_modules/appless/config.js"></script>
+    <script src="/node_modules/hdjs/require.js"></script>
+    <script src="/node_modules/hdjs/config.js"></script>
     <script>
     require(['jquery'], function ($) {
        //为异步请求设置CSRF令牌
@@ -33,43 +33,38 @@
     </script>
 </head>
 <body class="site">
-<div class="container-fluid admin-top">
-    <!--导航-->
-    <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <ul class="nav navbar-nav">
-                    <li class="top_menu">
-                        <a href="#" class="quickMenuLink">
-                            <i class="'fa-w fa fa-comments-o"></i> 网站主页 </a>
-                    </li>
-                    <li class="top_menu">
-                        <a href="#" target="_blank">
-                            <i class="'fa-w fa fa-cubes"></i> 视频单元 </a>
-                    </li>
-                </ul>
+<nav class="navbar navbar-expand-md navbar-dark admin-top bg-dark">
+    <a class="navbar-brand" href="#">Django</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <i class="'fa-w fa fa-comments-o"></i> 网站首页 <span class="sr-only">(current)</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <i class="'fa-w fa fa-comments-o"></i> 视频单元
+                </a>
+            </li>
+
+        </ul>
+        <ul class="nav-item dropdown my-2 my-lg-0">
+            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-w fa-user"></i>  {{Auth::guard('admin')->user()->username}} <span class="caret"></span>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdown01">
+               <a class="dropdown-item" href="/admin/changePassword">账号</a>
+                <a class="dropdown-item" href="/admin/logout">退出</a>
             </div>
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
-                            <i class="fa fa-w fa-user"></i>
-{{Auth::guard('admin')->user()->username}} <span class="caret"></span>
-</a>
-<ul class="dropdown-menu">
-    <li><a href="/admin/changePassword">我的帐号</a></li>
-    <li role="separator" class="divider"></li>
-    <li><a href="/admin/logout">退出</a></li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
+        </ul>
+    </div>
 </nav>
-<!--导航end-->
-</div>
-<!--主体-->
-<div class="container-fluid admin_menu">
+<div class="admin_menu container-fluid">
     <div class="row">
         <div class="col-xs-12 col-sm-3 col-lg-2 left-menu">
             <div class="search-menu">
@@ -77,40 +72,31 @@
                        onkeyup="search(this)">
             </div>
             <!--扩展模块动作 start-->
-            <div class="panel panel-default">
+            <div class="card" style="width: 10rem;">
                 <!--系统菜单-->
-                <div class="panel-heading">
-                    <h4 class="panel-title">系统管理</h4>
-                    <a class="panel-collapse" data-toggle="collapse" href="javascript:;">
-                        <i class="fa fa-chevron-circle-down"></i>
-                    </a>
+                <div class="card-header">
+                      系统管理    <i class="fa fa-chevron-circle-down"></i>
                 </div>
-                <ul class="list-group menus">
-                    <li class="list-group-item" id="35">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item" id="#">
                         <a href="/admin/changePassword">我的资料 </a>
                     </li>
                 </ul>
-                <div class="panel-heading">
-                    <h4 class="panel-title">内容管理</h4>
-                    <a class="panel-collapse" data-toggle="collapse" href="javascript:;">
-                        <i class="fa fa-chevron-circle-down"></i>
-                    </a>
+                <div class="card-header">
+                     内容管理    <i class="fa fa-chevron-circle-down"></i>
                 </div>
-                <ul class="list-group menus">
-                    <li class="list-group-item" id="39">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item" id="#">
                         <a href="/admin/tag">内容标签 </a>
                     </li>
-                    <li class="list-group-item" id="40">
+                    <li class="list-group-item" id="#">
                         <a href="/admin/lesson">
                             视频管理 </a>
                     </li>
                 </ul>
-                <!----------返回模块列表 start------------>
-                <!--模块列表-->
-                <!--模块列表 end-->
             </div>
         </div>
-        <div class="col-xs-12 col-sm-9 col-lg-10">
+        <div class="col-xs-12 col-sm-6 col-lg-10">
             @yield('content')
         </div>
     </div>
@@ -123,18 +109,6 @@
 <script>
     require(['bootstrap']);
 </script>
-<!--右键菜单添加到快捷导航-->
-<div id="context-menu">
-    <ul class="dropdown-menu" role="menu">
-        <li><a tabindex="-1" href="#">添加到快捷菜单</a></li>
-    </ul>
-</div>
-<!--右键菜单删除快捷导航-->
-<div id="context-menu-del">
-    <ul class="dropdown-menu" role="menu">
-        <li><a tabindex="-1" href="#">删除菜单</a></li>
-    </ul>
-</div>
 </body>
 @include('flash::message')
 </html>

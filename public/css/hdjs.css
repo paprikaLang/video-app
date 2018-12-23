@@ -30,7 +30,7 @@ table > tfoot > tr > td {
 }
 .admin-top {
   background: #222222;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 .admin-top .navbar {
   border: 0;
@@ -158,7 +158,7 @@ table > tfoot > tr > td {
 }
 .site .admin_menu .left-menu .panel .panel-heading .panel-collapse {
   width: 50px;
-  line-height: 2.5em;
+  line-height: 1.6em;
   position: absolute;
   right: 0;
   top: 0;
@@ -173,7 +173,7 @@ table > tfoot > tr > td {
 }
 .site .admin_menu .left-menu .panel ul li {
   cursor: pointer;
-  padding: 0px;
+  padding: 0;
 }
 .site .admin_menu .left-menu .panel ul li a {
   padding: 10px 15px;
