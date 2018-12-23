@@ -6,9 +6,11 @@ use App\Http\Requests\TagRequest;
 use App\Tag;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
-class TagController extends Controller
+use App\Http\Controllers\Admin\CommonController;
+class TagController extends CommonController
 {
+
+
     /**
      * Display a listing of the resource.
      *
@@ -85,6 +87,6 @@ class TagController extends Controller
     public function destroy($id)
     {
         Tag::destroy($id);
-        return response()->json(['message'=>'删除成功', 'valid' => 1]);
+        return $this->successMsg('删除成功');
     }
 }

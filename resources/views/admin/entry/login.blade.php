@@ -21,7 +21,7 @@
         <div class="form-group ">
           <label>帐号</label>
           <div class="input-group">
-            <div class="input-group-addon"><i class="fa fa-w fa-user"></i></div>
+            <div class="input-group-addon" style="margin: 5px 8px 0 0;"><i class="fa fa-w fa-user"></i> </div>
             <input type="text" name="username" class="form-control input-lg"
                    placeholder="请输入帐号" value="">
           </div>
@@ -29,7 +29,7 @@
         <div class="form-group ">
           <label>密码</label>
           <div class="input-group">
-            <div class="input-group-addon"><i class="fa fa-w fa-key"></i></div>
+            <div class="input-group-addon" style="margin: 5px 8px 0 0;"><i class="fa fa-w fa-key"></i> </div>
             <input type="password" name="password"
                    class="form-control input-lg" placeholder="请输入密码" value="">
           </div>
