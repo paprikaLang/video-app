@@ -11,7 +11,7 @@
     <link href="/node_modules/appless/package/webuploader/jekyll/css/font-awesome.min.css" rel="stylesheet">
     <link href="/css/video.css" rel="stylesheet">
     <script>
-//HDJS组件需要的配置
+//APPLESS组件需要的配置
 hdjs = {
     'base': '/node_modules/appless',
             'uploader': '/component/uploader',
@@ -20,7 +20,6 @@ hdjs = {
             'ossSign': '?s=component/oss/sign&m=member&siteid=18',
         };
     </script>
-    <script src="/node_modules/appless/component/util.js"></script>
     <script src="/node_modules/appless/require.js"></script>
     <script src="/node_modules/appless/config.js"></script>
     <script>

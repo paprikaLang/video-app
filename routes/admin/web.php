@@ -8,4 +8,6 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function (){
     //登录成功后的页面
     Route::get('/index', 'EntryController@index');
     Route::get('/logout','EntryController@logout');
+    Route::get('/changePassword', 'MyController@passwordForm');
+    Route::post('/changePassword', 'MyController@changePassword');
 });
