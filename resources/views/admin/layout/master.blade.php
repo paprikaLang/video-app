@@ -137,6 +137,7 @@ hdjs = {
     </ul>
 </div>
 </body>
+@include('flash::message')
 </html>
 <style>
     .pagination {

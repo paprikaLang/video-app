@@ -15,5 +15,7 @@ class MyController extends Controller
         $user = Auth::guard('admin')->user();
         $user->password = bcrypt($request['password']);
         $user->save();
+        flash('修改密码成功')->success();
+        return redirect()->back();
     }
 }
