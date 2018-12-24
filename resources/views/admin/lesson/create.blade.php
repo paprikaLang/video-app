@@ -62,39 +62,58 @@
             </ul>
         </div>
         <br>
-        <div class="card">
+        <div class="card" id="videoapp">
             <div class="card-header">
                 视频管理
             </div>
             <div class="card-body">
-                <div class="card">
+                <div class="card" v-for="(v, k) in videos" style="margin-bottom: 10px;">
                     <div class="card-body">
                         <div  style="display: flex; flex-direction: row;">
                             <label for="" class="col-sm-2 control-label">视频名称</label>
                             <div class="col-sm-6">
-                                <input type="text" class="form-control" name="title" required="required">
+                                <input type="text" class="form-control" name="title" v-model="v.title">
                             </div>
                         </div>
                         <br>
                         <div  style="display: flex; flex-direction: row;">
                             <label for="" class="col-sm-2 control-label">视频地址</label>
                             <div class="col-sm-6">
-                                <input type="text" class="form-control" name="title" required="required">
+                                <input type="text" class="form-control" name="title" v-model="v.path">
                             </div>
                         </div>
-                    </div>
+                        </div>
                     <div class="card-footer">
-                        <button class="btn-success">删除视频</button>
+                        <button class="btn-success" @click.prevent="del(k)">删除视频</button>
                     </div>
                 </div>
             </div>
             <div class="card-footer text-muted">
-                <button class="btn btn-default">添加视频</button>
+                <button class="btn btn-default" @click.prevent="add">添加视频</button>
             </div>
+            <textarea name="" cols="30" rows="8" hidden>@{{ videos }}</textarea>
         </div>
         <br>
         <button class="btn btn-primary">保存课程</button>
     </form>
     </div>
+    <script>
+        require(['vue'], function(Vue) {
+            new Vue({
+                el: '#videoapp',
+                data:{
+                    videos: [{title: '', path: ''}],
+                },
+                methods: {
+                    add: function () {
+                        this.videos.push({title: 'add', path: ''});
+                    },
+                    del: function (k) {
+                        this.videos.splice(k, 1);
+                    }
+                }
+            })
+        })
+    </script>
 
 @endsection
