@@ -1,5 +1,6 @@
 @extends('admin.layout.master')
 @section('content')
+    <div class="container" style="font-size: 12px;">
     <form action="/admin/tag/{{$tag['id']}}" method="post" class="form-horizontal" role="form">
         {{csrf_field()}}
         {{--{{ method_field('PUT') }} 伪造表单方法--}}
@@ -23,5 +24,5 @@
         <br>
         <button class="btn btn-primary">保存标签</button>
     </form>
-
+    </div>
 @endsection

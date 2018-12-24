@@ -110,6 +110,7 @@
     require(['bootstrap']);
 </script>
 </body>
+@include('admin.layout.errors')
 @include('flash::message')
 </html>
 <style>
