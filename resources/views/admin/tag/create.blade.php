@@ -10,7 +10,7 @@
         </li>
     </ul>
 
-        <form action="/admin/tag" method="post" class="form-horizontal" role="form">
+        <form  method="post" class="form-horizontal" role="form">
             {{csrf_field()}}
             <div class="card">
                 <div class="card-header">
@@ -29,7 +29,7 @@
                 </div>
             </div>
             <br>
-            <button class="btn btn-primary">保存标签</button>
+            <button class="btn btn-primary" style="font-size: 12px; line-height: 1.33;">保存标签</button>
         </form>
     </div>
 @endsection

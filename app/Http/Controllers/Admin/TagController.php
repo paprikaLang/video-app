@@ -19,6 +19,7 @@ class TagController extends CommonController
     public function index()
     {
         $tags = Tag::get();
+//        dd(phpinfo());
         return view('admin.tag.index',compact('tags'));
     }
 

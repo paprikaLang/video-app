@@ -16,7 +16,7 @@
 <div class="container well">
   <div class="row">
     <div class="col-md-6">
-      <form method="post" action="">
+      <form action="/admin/login"  method="post" role="form">
         {{ csrf_field() }}
         <div class="form-group ">
           <label>帐号</label>
@@ -41,6 +41,7 @@
         @endif
         <button type="submit" class="btn btn-primary btn-lg">登录</button>
       </form>
+      <br>
     </div>
     <div class="col-md-6">
       <div style="background: url('https://paprika-dev.b0.upaiyun.com/om3jkIT4nVK8WwYN8K9WyxEghHDk36WpEfgY8Ta3.jpeg') no-repeat;background-size:100%;height:230px;"></div>

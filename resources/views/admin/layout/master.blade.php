@@ -19,8 +19,10 @@
             'ossSign': '?s=component/oss/sign&m=member&siteid=18',
         };
     </script>
+    <script src="/node_modules/hdjs/hdjs.js"></script>
     <script src="/node_modules/hdjs/require.js"></script>
     <script src="/node_modules/hdjs/config.js"></script>
+
     <script>
     require(['jquery'], function ($) {
        //为异步请求设置CSRF令牌
@@ -31,6 +33,21 @@
        });
     })
     </script>
+    <style>
+        .btn {
+            font-size: 12px;
+            line-height: 1.33;
+        }
+        .pagination {
+            margin: 0;
+            float: right;
+        }
+        .form-control {
+            font-size: 12px;
+            line-height: 1.33;
+        }
+    </style>
+
 </head>
 <body class="site">
 <nav class="navbar navbar-expand-md navbar-dark admin-top bg-dark">
@@ -66,13 +83,13 @@
 </nav>
 <div class="admin_menu container-fluid">
     <div class="row">
-        <div class="col-xs-12 col-sm-3 col-lg-2 left-menu">
-            <div class="search-menu">
+        <div class="col-xs-3 col-sm-3 col-lg-2 left-menu">
+            <div class="search-menu col-xs-3">
                 <input class="form-control input-lg" type="text" placeholder="快速查找"
                        onkeyup="search(this)">
             </div>
             <!--扩展模块动作 start-->
-            <div class="card" style="width: 10rem;">
+            <div class="card text-center" style="width: 10rem;">
                 <!--系统菜单-->
                 <div class="card-header">
                       系统管理    <i class="fa fa-chevron-circle-down"></i>
@@ -95,8 +112,9 @@
                     </li>
                 </ul>
             </div>
+            <br>
         </div>
-        <div class="col-xs-12 col-sm-6 col-lg-10">
+        <div class="col-xs-12 col-sm-6 col-lg-10 ">
             @yield('content')
         </div>
     </div>
@@ -113,9 +131,3 @@
 @include('admin.layout.errors')
 @include('flash::message')
 </html>
-<style>
-    .pagination {
-        margin: 0;
-        float: right;
-    }
-</style>

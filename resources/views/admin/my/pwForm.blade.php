@@ -1,8 +1,14 @@
 @extends('admin.layout.master')
 @section('content')
-    <form action="/admin/changePassword" method="post" class="form-horizontal" role="form" style="font-size: 12px;">
+    <div class="container" style="font-size: 12px;">
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <label class="label-success">我的资料</label>
+            </li>
+        </ul>
+    <form action="/admin/changePassword" method="post" class="form-horizontal" role="form">
         {{csrf_field()}}
-        <div class="card" style="width: 30rem;">
+        <div class="card col-sm-5">
             <div class="card-header">
                 修改密码
             </div>
@@ -31,4 +37,5 @@
         {{--data-toggle="modal" data-target="#exampleModal"--}}
         <button class="btn btn-primary">保存修改</button>
     </form>
+    </div>
 @endsection
