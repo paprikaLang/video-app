@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.7.19 on 2018-12-21 11:55:02.
+ * Generated for Laravel 5.7.19 on 2018-12-25 10:00:58.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -13368,6 +13368,114 @@ namespace Illuminate\Support\Facades {
  
 }
 
+namespace Laracasts\Flash { 
+
+    /**
+     * 
+     *
+     */ 
+    class Flash {
+        
+        /**
+         * Flash an information message.
+         *
+         * @param string|null $message
+         * @return $this 
+         * @static 
+         */ 
+        public static function info($message = null)
+        {
+            return \Laracasts\Flash\FlashNotifier::info($message);
+        }
+        
+        /**
+         * Flash a success message.
+         *
+         * @param string|null $message
+         * @return $this 
+         * @static 
+         */ 
+        public static function success($message = null)
+        {
+            return \Laracasts\Flash\FlashNotifier::success($message);
+        }
+        
+        /**
+         * Flash an error message.
+         *
+         * @param string|null $message
+         * @return $this 
+         * @static 
+         */ 
+        public static function error($message = null)
+        {
+            return \Laracasts\Flash\FlashNotifier::error($message);
+        }
+        
+        /**
+         * Flash a warning message.
+         *
+         * @param string|null $message
+         * @return $this 
+         * @static 
+         */ 
+        public static function warning($message = null)
+        {
+            return \Laracasts\Flash\FlashNotifier::warning($message);
+        }
+        
+        /**
+         * Flash a general message.
+         *
+         * @param string|null $message
+         * @param string|null $level
+         * @return $this 
+         * @static 
+         */ 
+        public static function message($message = null, $level = null)
+        {
+            return \Laracasts\Flash\FlashNotifier::message($message, $level);
+        }
+        
+        /**
+         * Flash an overlay modal.
+         *
+         * @param string|null $message
+         * @param string $title
+         * @return $this 
+         * @static 
+         */ 
+        public static function overlay($message = null, $title = 'Notice')
+        {
+            return \Laracasts\Flash\FlashNotifier::overlay($message, $title);
+        }
+        
+        /**
+         * Add an "important" flash to the session.
+         *
+         * @return $this 
+         * @static 
+         */ 
+        public static function important()
+        {
+            return \Laracasts\Flash\FlashNotifier::important();
+        }
+        
+        /**
+         * Clear all registered messages.
+         *
+         * @return $this 
+         * @static 
+         */ 
+        public static function clear()
+        {
+            return \Laracasts\Flash\FlashNotifier::clear();
+        }
+         
+    }
+ 
+}
+
 
 namespace  { 
 
@@ -15797,6 +15905,8 @@ namespace  {
     class Validator extends \Illuminate\Support\Facades\Validator {}
 
     class View extends \Illuminate\Support\Facades\View {}
+
+    class Flash extends \Laracasts\Flash\Flash {}
  
 }
 

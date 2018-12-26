@@ -13,8 +13,8 @@
     <script>
         hdjs = {
             'base': '/node_modules/hdjs',
-            'uploader': '/component/uploader',
             'filesLists': '/component/filesLists?',
+            'uploader': '/component/uploader',
             'removeImage': '?s=component/upload/removeImage&m=member&siteid=18',
             'ossSign': '?s=component/oss/sign&m=member&siteid=18',
         };

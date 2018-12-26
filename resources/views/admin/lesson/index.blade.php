@@ -20,7 +20,8 @@
                     <thead>
                     <tr>
                         <th width="90">编号</th>
-                        <th>课程</th>
+                        <th>课程名称</th>
+                        <th>视频数量</th>
                         <th width="80">操作</th>
                     </tr>
                     </thead>
@@ -28,7 +29,8 @@
                     @foreach($lessons as $lesson)
                         <tr>
                             <td>{{$lesson['id']}}</td>
-                            <td>{{$lesson['tag_name']}}</td>
+                            <td>{{$lesson['title']}}</td>
+                            <td>{{$lesson->videos()->count()}}</td>
                             <td>
                                 <div class="btn-group btn-group-sm">
                                     <a href="/admin/lesson/{{$lesson['id']}}/edit" class="btn btn-default">编辑</a>

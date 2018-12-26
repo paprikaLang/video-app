@@ -12,9 +12,9 @@
 */
 
 Route::get('/', function () {
-
     return redirect('/admin/login');
 });
+
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function (){
     //后台登录 video.test/admin/login => Admin\EntryController
     Route::get('/login', 'EntryController@loginForm');
@@ -28,5 +28,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function (){
     //资源控制器Tag
     Route::resource('tag','TagController');
     Route::resource('lesson','LessonController');
+
 });
+// name('') 别名可以在 {{route('')}}对应上
+Route::any('/component/uploader','Component\UploadController@uploader');
+Route::any('/component/filesLists','Component\UploadController@fileslists');
 //include __DIR__.'/admin/web.php';

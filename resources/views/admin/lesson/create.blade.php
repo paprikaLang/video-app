@@ -33,8 +33,8 @@
                     <label for="" class="col-sm-2 control-label">预览图</label>
                     <div class="col-sm-8">
                         <div class="input-group mb-1">
-                            <input class="form-control  form-control-sm" name="preview" readonly="" value="/images/noll.jpg">
-                            <div class="input-group-append">
+                            <input type="text" class="form-control  form-control-sm" name="preview" value="" readonly="" required>
+                            <div class="input-group-btn">
                                 <button onclick="upImagePc(this)" class="btn btn-secondary" type="button">单图上传</button>
                             </div>
                         </div>
@@ -44,28 +44,6 @@
                                 onclick="removeImg(this)">×</em>
                         </div>
                     </div>
-                    <script>
-                        require(['hdjs','bootstrap']);
-                        //上传图片
-                        function upImagePc() {
-                            require(['hdjs'], function (hdjs) {
-                                var options = {
-                                    multiple: false,//是否允许多图上传
-
-                                };
-                                hdjs.image(function (images) {
-                                    //上传成功的图片，数组类型
-                                    $("[name='preview']").val(images[0]);
-                                    $(".img-thumbnail").attr('src', images[0]);
-                                }, options)
-                            });
-                        }
-                        //移除图片
-                        function removeImg(obj) {
-                            $(obj).prev('img').attr('src', '../dist/static/image/nopic.jpg');
-                            $(obj).parent().prev().find('input').val('');
-                        }
-                    </script>
                 </li>
                 <li class="list-group-item" style="display: flex; flex-direction: row;">
                     <label for="" class="col-sm-2 control-label">推荐</label>
@@ -94,7 +72,7 @@
                 <li class="list-group-item" style="display: flex; flex-direction: row;">
                     <label for="" class="col-sm-2 control-label">点击数</label>
                     <div class="col-sm-2">
-                        <input type="text" class="form-control" name="title" required="required" value="0">
+                        <input type="text" class="form-control" name="clicks" required="required" value="0">
                     </div>
                 </li>
             </ul>
@@ -129,13 +107,34 @@
             <div class="card-footer text-muted">
                 <button class="btn btn-primary" @click.prevent="add">添加视频</button>
             </div>
-            <textarea name="" cols="30" rows="8" hidden>@{{ videos }}</textarea>
+            <textarea name="videos" cols="30" rows="8" >@{{ videos }}</textarea>
         </div>
         <br>
         <button class="btn btn-primary">保存课程</button>
     </form>
     </div>
     <script>
+        // require(['hdjs','bootstrap']);
+        //上传图片
+        function upImagePc(obj) {
+            require(['hdjs'], function (hdjs) {
+                var options = {
+                    multiple: false,//是否允许多图上传
+                };
+                hdjs.image(function (images) {
+                    //上传成功的图片，数组类型
+                    console.log(images);
+                    $("[name='preview']").val(images[0]);
+                    $(".img-thumbnail").attr('src', images[0]);
+                }, options)
+            });
+        }
+        //移除图片
+        function removeImg(obj) {
+            $(obj).prev('img').attr('src', '../dist/static/images/noll.jpg');
+            $(obj).parent().prev().find('input').val('');
+        }
+
         require(['vue'], function(Vue) {
             new Vue({
                 el: '#videoapp',

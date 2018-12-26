@@ -35,9 +35,21 @@ class LessonController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Lesson $lesson)
     {
-        //
+        $lesson['title'] = $request['title'];
+        $lesson['desc'] = $request['desc'];
+        $lesson['preview'] = $request['preview'];
+        $lesson['iscommend'] = $request['iscommend'];
+        $lesson['ishot'] = $request['ishot'];
+        $lesson['clicks'] = $request['clicks'];
+        $lesson->save();
+
+        $videos = \GuzzleHttp\json_decode($request['videos'],true);
+        foreach ($videos as $video){
+            $lesson->videos()->create($video);
+        }
+        return redirect('admin/lesson');
     }
 
     /**
