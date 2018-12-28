@@ -18,6 +18,9 @@
             'removeImage': '?s=component/upload/removeImage&m=member&siteid=18',
             'ossSign': '?s=component/oss/sign&m=member&siteid=18',
         };
+        system = {
+            'url': '/api/component/video'
+        }
     </script>
     <script src="/node_modules/hdjs/hdjs.js"></script>
     <script src="/node_modules/hdjs/require.js"></script>

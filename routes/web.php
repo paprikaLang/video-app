@@ -33,4 +33,5 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function (){
 // name('') 别名可以在 {{route('')}}对应上
 Route::any('/component/uploader','Component\UploadController@uploader');
 Route::any('/component/filesLists','Component\UploadController@fileslists');
+
 //include __DIR__.'/admin/web.php';
