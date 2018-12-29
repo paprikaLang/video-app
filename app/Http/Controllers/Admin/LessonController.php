@@ -7,7 +7,7 @@ use App\Model\Video;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class LessonController extends Controller
+class LessonController extends CommonController
 {
     /**
      * Display a listing of the resource.
@@ -118,6 +118,8 @@ class LessonController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Lesson::destroy($id);
+        Video::where('lesson_id', $id)->delete();
+        return $this->successMsg('删除成功');
     }
 }
