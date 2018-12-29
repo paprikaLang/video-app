@@ -48,16 +48,16 @@
     <!--底部固定导航-->
     <ul id="bottom">
       <li class="cur">
-        <a href="index.html">
+        <router-link to="/">
           <i class="iconfont icon-shouyeshouye"></i>
           <span>首页</span>
-        </a>
+        </router-link>
       </li>
       <li>
-        <a href="video.html">
+        <router-link to="/video">
           <i class="iconfont icon-icon02"></i>
           <span>视频</span>
-        </a>
+        </router-link>
       </li>
     </ul>
   </div>
