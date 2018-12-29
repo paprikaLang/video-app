@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Model\Lesson;
+use App\Model\Video;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -37,7 +38,7 @@ class LessonController extends Controller
      */
     public function store(Request $request, Lesson $lesson)
     {
-        $lesson['title'] = $request['title'];
+        $lesson['title'] = $request['lessontitle'];
         $lesson['desc'] = $request['desc'];
         $lesson['preview'] = $request['preview'];
         $lesson['iscommend'] = $request['iscommend'];
@@ -47,7 +48,10 @@ class LessonController extends Controller
 
         $videos = \GuzzleHttp\json_decode($request['videos'],true);
         foreach ($videos as $video){
-            $lesson->videos()->create($video);
+            $lesson->videos()->create([
+                'title' => $video['title'],
+                'path' => $video['path']
+            ]);
         }
         return redirect('admin/lesson');
     }
@@ -71,7 +75,11 @@ class LessonController extends Controller
      */
     public function edit($id)
     {
-        //
+
+        $lesson = Lesson::find($id);
+        $videos = \GuzzleHttp\json_encode($lesson->videos()->get()->toArray(), JSON_UNESCAPED_UNICODE);
+
+        return view('admin.lesson.edit',compact('lesson','videos'));
     }
 
     /**
@@ -83,7 +91,23 @@ class LessonController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $lesson = Lesson::find($id);
+        $lesson['title'] = $request['lessontitle'];
+        $lesson['desc'] = $request['desc'];
+        $lesson['preview'] = $request['preview'];
+        $lesson['iscommend'] = $request['iscommend'];
+        $lesson['ishot'] = $request['ishot'];
+        $lesson['clicks'] = $request['clicks'];
+        $lesson->save();
+        Video::where('lesson_id', $id)->delete();
+        $videos = \GuzzleHttp\json_decode($request['videos'],true);
+        foreach ($videos as $video){
+            $lesson->videos()->create([
+                'title' => $video['title'],
+                'path' => $video['path']
+            ]);
+        }
+        return redirect('admin/lesson');
     }
 
     /**

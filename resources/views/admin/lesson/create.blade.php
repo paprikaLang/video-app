@@ -6,7 +6,7 @@
             <a class="nav-link disabled" href="/admin/lesson">课程列表</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link active" href="/admin/lesson/create">课程标签</a>
+            <a class="nav-link active" href="/admin/lesson/create">创建课程</a>
         </li>
     </ul>
 
@@ -20,7 +20,7 @@
                <li class="list-group-item" style="display: flex; flex-direction: row;">
                    <label for="" class="col-sm-2 control-label">课程名称</label>
                    <div class="col-sm-6">
-                       <input type="text" class="form-control" name="title" required="required">
+                       <input type="text" class="form-control" name="lessontitle" required="required">
                    </div>
                </li>
                 <li class="list-group-item" style="display: flex; flex-direction: row;">
@@ -100,14 +100,14 @@
                         <div  style="display: flex; flex-direction: row;">
                             <label for="" class="col-sm-2 control-label">视频地址</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" name="videotitle" value="" v-model="v.path">
+                                <input type="text" class="form-control" name="videopath" value="" v-model="v.path">
                             </div>
                         </div>
                         <br>
                         <div  style="display: flex; flex-direction: row;">
                             <label for="" class="col-sm-2 control-label">视频名称</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" name="title" v-model="v.title" required>
+                                <input type="text" class="form-control" name="videotitle" v-model="v.title" required>
                             </div>
                         </div>
                         </div>

@@ -7,7 +7,7 @@
             <a class="nav-link active" href="/admin/lesson">课程列表</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link disabled" href="/admin/lesson/create">新增课程</a>
+            <a class="nav-link disabled" href="/admin/lesson/create">创建课程</a>
         </li>
     </ul>
     <form action="" method="post" class="form-horizontal col-sm-12" role="form">
@@ -52,7 +52,7 @@
             require(['hdjs','bootstrap'], function (hdjs) {
                 hdjs.confirm('确定删除吗?', function () {
                     $.ajax({
-                        url: '/admin/tag/' + id,
+                        url: '/admin/lesson/' + id,
                         method: 'DELETE',
                         success: function (response) {
                             hdjs.message(response.message, 'refresh');
