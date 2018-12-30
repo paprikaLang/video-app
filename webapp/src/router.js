@@ -19,7 +19,7 @@ export default new Router({
           component:  () => import(/* webpackChunkName: "about" */ './views/Page.vue')
       },
     {
-      path: '/video',
+      path: '/video/:tid?', // ? 不是必须要有tid参数
       name: 'videoList',
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route

@@ -3,102 +3,25 @@
         <!--导航条-->
         <swiper :options="swiperOption">
             <swiper-slide v-for="t in tags" :key="t.id">
-                    {{t.title}}
+                <!--http://localhost:8080/video/3-->
+                <router-link :to="{params: {tid:t.id},name:'videoList'}">
+                    {{t.tag_name}}
+                </router-link>
+
             </swiper-slide>
         </swiper>
         <!--导航条结束-->
-
         <!--视频列表-->
         <ul id="videolist">
-            <li>
-                <router-link class="pic" to="/page">
-                    <img src="../assets/5.jpg"/>
+            <li v-for="l in tlessons" :key="l.id">
+                <router-link  :to="{params:{lessonId:l.id}, name:'page'}" class="pic">
+                    <img :src="l.preview"/>
                     <span>08:26</span>
                     <i class="glyphicon glyphicon-play-circle"></i>
                 </router-link>
-                <router-link class="title" to="/page">
-                    精准投放与精准消除
+                <router-link  :to="{params:{lessonId:l.id}, name:'page'}" >
+                   {{l.title}}
                 </router-link>
-            </li>
-            <li>
-                <a href="" class="pic">
-                    <img src="../assets/4.jpg"/>
-                    <span>08:26</span>
-                    <i class="iconfont icon-bofang"></i>
-                </a>
-                <a href="" class="title">精准投放与精准消除</a>
-            </li>
-            <li>
-                <a href="" class="pic">
-                    <img src="../assets/5.jpg"/>
-                    <span>08:26</span>
-                    <i class="iconfont icon-bofang"></i>
-                </a>
-                <a href="" class="title">精准投放与精准消除</a>
-            </li>
-            <li>
-                <a href="" class="pic">
-                    <img src="../assets/4.jpg"/>
-                    <span>08:26</span>
-                    <i class="iconfont icon-bofang"></i>
-                </a>
-                <a href="" class="title">精准投放与精准消除</a>
-            </li>
-            <li>
-                <a href="" class="pic">
-                    <img src="../assets/5.jpg"/>
-                    <span>08:26</span>
-                    <i class="iconfont icon-bofang"></i>
-                </a>
-                <a href="" class="title">精准投放与精准消除</a>
-            </li>
-            <li>
-                <a href="" class="pic">
-                    <img src="../assets/4.jpg"/>
-                    <span>08:26</span>
-                    <i class="iconfont icon-bofang"></i>
-                </a>
-                <a href="" class="title">精准投放与精准消除</a>
-            </li>
-            <li>
-                <a href="" class="pic">
-                    <img src="../assets/5.jpg"/>
-                    <span>08:26</span>
-                    <i class="iconfont icon-bofang"></i>
-                </a>
-                <a href="" class="title">精准投放与精准消除</a>
-            </li>
-            <li>
-                <a href="" class="pic">
-                    <img src="../assets/4.jpg"/>
-                    <span>08:26</span>
-                    <i class="iconfont icon-bofang"></i>
-                </a>
-                <a href="" class="title">精准投放与精准消除</a>
-            </li>
-            <li>
-                <a href="" class="pic">
-                    <img src="../assets/5.jpg"/>
-                    <span>08:26</span>
-                    <i class="iconfont icon-bofang"></i>
-                </a>
-                <a href="" class="title">精准投放与精准消除</a>
-            </li>
-            <li>
-                <a href="" class="pic">
-                    <img src="../assets/4.jpg"/>
-                    <span>08:26</span>
-                    <i class="iconfont icon-bofang"></i>
-                </a>
-                <a href="" class="title">精准投放与精准消除</a>
-            </li>
-            <li>
-                <a href="" class="pic">
-                    <img src="../assets/5.jpg"/>
-                    <span>08:26</span>
-                    <i class="iconfont icon-bofang"></i>
-                </a>
-                <a href="" class="title">精准投放与精准消除</a>
             </li>
         </ul>
         <!--视频列表结束-->
@@ -124,20 +47,18 @@
 <script>
     export default {
         name: 'videoList',
+        watch: {
+            '$route'(to, from){
+                this.loadData();
+            }
+        },
         mounted(){
-
+            this.loadData();
         },
         data () {
             return {
-
-                tags: [
-                    {id:1, title: 'PHP'},
-                    {id:2, title: 'LARAVEL'},
-                    {id:3, title: 'DJANGO'},
-                    {id:4, title: 'FLASK'},
-                    {id:5, title: 'GOLANG'},
-                    {id:6, title: 'REACT'},
-                ],
+                tags: [],
+                tlessons: [],
                 swiperOption: {
                     slidesPerView: 3,
                     spaceBetween: 30,
@@ -150,7 +71,16 @@
             }
         },
         methods:{
-
+           loadData() {
+               let tid = this.$route.params.tid;
+               this.axios.get('http://laravideo.paprikalang.tk/api/tags').then(response => {
+                   this.tags = response.data.data;
+               })
+               // 导航标签对应的课程
+               this.axios.get('http://laravideo.paprikalang.tk/api/tlesson/' + (tid ? tid:0)).then(response => {
+                   this.tlessons = response.data.data;
+               })
+           }
         }
     }
 </script>

@@ -7,9 +7,9 @@
         <ul id="list">
             <li class="cur" v-for="v in videos"><a href="" @click.prevent="play(v)">{{v.title}}</a></li>
         </ul>
-        <router-link to="/video">
+        <a @click.prevent="back()">
             <i class="glyphicon glyphicon-hand-left"></i>
-        </router-link>
+        </a>
     </div>
 </template>
 
@@ -36,8 +36,11 @@
         methods: {
             play(video){
                 this.current = video;
-
+            },
+            back() {
+                this.$router.back();
             }
+
         }
     }
 </script>
