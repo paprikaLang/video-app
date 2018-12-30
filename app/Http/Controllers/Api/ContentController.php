@@ -19,7 +19,9 @@ class ContentController extends CommonController
     }
     public function tlesson($tid) {
         if ($tid) {
+            // select {都是lessons表的数据, id就是lesson的ID}, 没有select是join两个表的所有数据.而且id lesson_id tag_id 各有所指
             $data = DB::table('lessons')
+                      ->select('lessons.*')
                       ->join('tag_lessons','lessons.id','=','tag_lessons.lesson_id')
                       ->where('tag_id', $tid)
                       ->get();

@@ -7,7 +7,6 @@
                 <router-link :to="{params: {tid:t.id},name:'videoList'}">
                     {{t.tag_name}}
                 </router-link>
-
             </swiper-slide>
         </swiper>
         <!--导航条结束-->
@@ -53,6 +52,9 @@
             }
         },
         mounted(){
+            this.axios.get('http://laravideo.paprikalang.tk/api/tags').then(response => {
+                this.tags = response.data.data;
+            });
             this.loadData();
         },
         data () {
@@ -72,11 +74,8 @@
         },
         methods:{
            loadData() {
-               let tid = this.$route.params.tid;
-               this.axios.get('http://laravideo.paprikalang.tk/api/tags').then(response => {
-                   this.tags = response.data.data;
-               })
                // 导航标签对应的课程
+               let tid = this.$route.params.tid;
                this.axios.get('http://laravideo.paprikalang.tk/api/tlesson/' + (tid ? tid:0)).then(response => {
                    this.tlessons = response.data.data;
                })
