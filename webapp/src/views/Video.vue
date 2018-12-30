@@ -124,8 +124,12 @@
 <script>
     export default {
         name: 'videoList',
+        mounted(){
+
+        },
         data () {
             return {
+
                 tags: [
                     {id:1, title: 'PHP'},
                     {id:2, title: 'LARAVEL'},

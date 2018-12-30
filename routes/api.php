@@ -20,7 +20,10 @@ Route::post('/component/video','Component\UploadController@video');
 
 Route::group(['namespace' => 'Api'], function (){
     Route::get('tags','ContentController@tags');
-    Route::get('lesson/{tid}', 'ContentController@lesson');
+    //lesson_id
+    Route::get('lesson/{id}', 'ContentController@lesson');
+    //tag
+    Route::get('tlesson/{tid}', 'ContentController@tlesson');
     Route::get('commendLesson/{row}','ContentController@commendLesson');
     Route::get('hotLesson/{row}','ContentController@hotLesson');
     Route::get('videos/{lessonId}','ContentController@videos');

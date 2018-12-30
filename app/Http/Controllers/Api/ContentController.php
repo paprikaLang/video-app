@@ -14,7 +14,10 @@ class ContentController extends CommonController
     public function tags() {
         return $this->response(Tag::get());
     }
-    public function lesson($tid) {
+    public function lesson($id){
+        return $this->response(Lesson::where('id', $id)->get());
+    }
+    public function tlesson($tid) {
         if ($tid) {
             $data = DB::table('lessons')
                       ->join('tag_lessons','lessons.id','=','tag_lessons.lesson_id')

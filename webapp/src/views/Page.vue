@@ -1,34 +1,11 @@
 <template>
     <div>
-        <!--视频-->
-        <video src="../assets/moments.mp4" controls="controls" poster="../assets/5.jpg"></video>
-        <h1>10 导航条样式的设置</h1>
+        <!--视频 autoplay="autoplay"-->
+        <video :src="current.path" controls="controls" :poster="lesson.preview"></video>
+        <h1>{{lesson.title}}</h1>
 
         <ul id="list">
-            <li><a href="">07 w3c规范 创建网页的方法</a></li>
-            <li class="cur"><a href="">08 a标签 img标签详解</a></li>
-            <li><a href="">09 代码注释</a></li>
-            <li><a href="">07 w3c规范 创建网页的方法</a></li>
-            <li><a href="">08 a标签 img标签详解</a></li>
-            <li><a href="">09 代码注释</a></li>
-            <li><a href="">07 w3c规范 创建网页的方法</a></li>
-            <li><a href="">08 a标签 img标签详解</a></li>
-            <li><a href="">09 代码注释</a></li>
-            <li><a href="">08 a标签 img标签详解</a></li>
-            <li><a href="">09 代码注释</a></li>
-            <li><a href="">07 w3c规范 创建网页的方法</a></li>
-            <li><a href="">08 a标签 img标签详解</a></li>
-            <li><a href="">09 代码注释</a></li>
-            <li><a href="">08 a标签 img标签详解</a></li>
-            <li><a href="">09 代码注释</a></li>
-            <li><a href="">07 w3c规范 创建网页的方法</a></li>
-            <li><a href="">08 a标签 img标签详解</a></li>
-            <li><a href="">09 代码注释</a></li>
-            <li><a href="">08 a标签 img标签详解</a></li>
-            <li><a href="">09 代码注释</a></li>
-            <li><a href="">07 w3c规范 创建网页的方法</a></li>
-            <li><a href="">08 a标签 img标签详解</a></li>
-            <li><a href="">09 代码注释</a></li>
+            <li class="cur" v-for="v in videos"><a href="" @click.prevent="play(v)">{{v.title}}</a></li>
         </ul>
         <router-link to="/video">
             <i class="glyphicon glyphicon-hand-left"></i>
@@ -38,11 +15,37 @@
 
 <script>
     export default {
-        name: "page"
+        name: "page",
+        mounted() {
+            let lessonId = this.$route.params.lessonId;
+            this.axios.get('http://laravideo.paprikalang.tk/api/videos/' + lessonId).then(response => {
+                this.videos = response.data.data;
+                this.current = this.videos[0];
+            });
+            this.axios.get('http://laravideo.paprikalang.tk/api/lesson/' + lessonId).then(response => {
+                this.lesson = response.data.data[0];
+            });
+        },
+        data() {
+            return {
+                current: {},
+                lesson: {},
+                videos:[],
+            }
+        },
+        methods: {
+            play(video){
+                this.current = video;
+
+            }
+        }
     }
 </script>
 
 <style scoped>
+    video[poster] {
+        object-fit: cover;
+    }
     * {
         padding: 0;
         margin: 0;

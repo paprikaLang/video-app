@@ -73,7 +73,7 @@
                     <li class="list-group-item" style="display: flex; flex-direction: row;">
                         <label for="" class="col-sm-2 control-label">点击数</label>
                         <div class="col-sm-2">
-                            <input type="text" class="form-control" name="clicks" required="required" value="{{$lesson['clicks']}}">
+                            <input type="text" class="form-control" name="clicks" required="required" value="">
                         </div>
                     </li>
                 </ul>
@@ -90,7 +90,7 @@
                                 <label for="" class="col-sm-2 control-label">添加视频</label>
                                 <div class="col-sm-8">
                                     <div class="form-group">
-                                        <input name="video" type="file" id="video" value="选择视频">
+                                        <input name="video" type="file" :id="uploadId(v)" value="选择视频">
                                     </div>
                                     <div class="form-group">
                                         <button @click="uploadAgain(v)">上传视频</button>
@@ -146,7 +146,6 @@
             $(obj).prev('img').attr('src', '../dist/static/images/noll.jpg');
             $(obj).parent().prev().find('input').val('');
         }
-
         require(['vue'], function(Vue) {
             new Vue({
                 el: '#videoapp',
@@ -160,17 +159,22 @@
                     del: function (k) {
                         this.videos.splice(k, 1);
                     },
+                    uploadId: function(v) {
+                        return 'video' + v.id;
+                    },
+                    uploadIdJquery(v) {
+                        return '#' + this.uploadId(v);
+                    },
                     uploadAgain(v){
-                        // v.title = '';
-                        // v.path = '';
-                        $("[name='videotitle']").val('');
-                        $("[name='videopath']").val('');
+                        v.title = '';
+                        v.path = '';
                         this.uploadVideo(v);
                     },
                     uploadVideo(v) {
+                        var uploadIdJquery = this.uploadIdJquery(v);
                         require(['hdjs'], function (hdjs) {
                             var formData = new FormData();
-                            var videoFile = document.querySelector('#video');
+                            var videoFile = document.querySelector(uploadIdJquery);
                             formData.append("video", videoFile.files[0]);
                             hdjs.ajax({
                                 data: formData,

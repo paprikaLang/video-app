@@ -87,10 +87,6 @@
 <div class="admin_menu container-fluid">
     <div class="row">
         <div class="col-xs-3 col-sm-3 col-lg-2 left-menu">
-            <div class="search-menu col-xs-3">
-                <input class="form-control input-lg" type="text" placeholder="快速查找"
-                       onkeyup="search(this)">
-            </div>
             <!--扩展模块动作 start-->
             <div class="card text-center" style="width: 10rem;">
                 <!--系统菜单-->
