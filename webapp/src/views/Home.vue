@@ -14,32 +14,24 @@
     </swiper>
     <!--轮播图结束-->
     <!--推荐课程-->
-    <h2>推荐视频</h2>
-
+    <h2>推荐课程</h2>
     <div id="recommend">
-      <a href="">
-        <img src="../assets/4.jpg" alt="" />
+      <router-link :to="{params: {lessonId:lesson.id}, name:'page'}" v-for="lesson in commendLessons">
+        <img :src="lesson.preview"/>
         <i class="glyphicon glyphicon-play-circle"></i>
         <span class="time">22:56</span>
-        <span class="title">谷歌：没有扫描仪也能</span>
-      </a>
-      <a href="">
-        <img src="../assets/5.jpg" alt="" />
-        <i class="glyphicon glyphicon-play-circle"></i>
-        <span class="time">22:56</span>
-        <span class="title">谷歌：没有扫描仪也能</span>
-      </a>
+        <span class="title">{{ lesson.title }}</span>
+      </router-link>
     </div>
     <!--推荐视频结束-->
     <a href="" class="more">MORE ></a>
     <!--今日推荐-->
-    <h2>今日推荐</h2>
+    <h2>热门课程</h2>
     <div class="today">
-      <a href="" class="title">大数据下的广告：精准投放与精准消除</a>
-      <p class="column">网络资讯</p>
       <div class="pic">
-        <a href=""><img src="../assets/4.jpg"/></a>
-        <a href=""><img src="../assets/5.jpg"/></a>
+        <router-link :to="{params: {lessonId:lesson.id}, name:'page'}" v-for="lesson in hotLessons">
+            <img :src="lesson.preview"/>
+        </router-link>
       </div>
     </div>
     <!--今日推荐结束-->
@@ -65,14 +57,21 @@
     export default {
         name: 'home',
         mounted(){
-
+            this.axios.get('http://laravideo.paprikalang.tk/api/commendLesson/3').then(response => {
+                this.commendLessons = response.data.data;
+            })
+            this.axios.get('http://laravideo.paprikalang.tk/api/hotLesson/3').then(response => {
+                this.hotLessons = response.data.data;
+            })
         },
         data() {
             return {
+                commendLessons: [],
+                hotLessons: [],
                 slides: [
-                    {id:1,path:'https://paprika-dev.b0.upaiyun.com/VZnvm7Gum43w2SEEdgQRyNADz4nGwHwVyXcJAJdI.jpeg'},
+                    {id:3,path:'https://paprika-dev.b0.upaiyun.com/VZnvm7Gum43w2SEEdgQRyNADz4nGwHwVyXcJAJdI.jpeg'},
                     {id:2,path:'https://paprika-dev.b0.upaiyun.com/Lpyx2fePqWnwRYPtDxvwA89K70tD54ywzMydiN2e.jpeg'},
-                    {id:3,path:'https://paprika-dev.b0.upaiyun.com/om3jkIT4nVK8WwYN8K9WyxEghHDk36WpEfgY8Ta3.jpeg'},
+                    {id:1,path:'https://paprika-dev.b0.upaiyun.com/om3jkIT4nVK8WwYN8K9WyxEghHDk36WpEfgY8Ta3.jpeg'},
                 ],
                 swiperOption: {
                     pagination: {

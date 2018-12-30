@@ -14,7 +14,7 @@ export default new Router({
       component: Home
     },
       {
-          path: '/page',
+          path: '/page/:lessonId',
           name: 'page',
           component:  () => import(/* webpackChunkName: "about" */ './views/Page.vue')
       },
