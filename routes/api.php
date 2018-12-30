@@ -17,3 +17,26 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::post('/component/video','Component\UploadController@video');
+
+Route::group(['namespace' => 'Api'], function (){
+    Route::get('tags','ContentController@tags');
+    Route::get('lesson/{tid}', 'ContentController@lesson');
+    Route::get('commendLesson/{row}','ContentController@commendLesson');
+    Route::get('hotLesson/{row}','ContentController@hotLesson');
+    Route::get('videos/{lessonId}','ContentController@videos');
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
