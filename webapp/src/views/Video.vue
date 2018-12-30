@@ -1,29 +1,24 @@
 <template>
     <div>
         <!--导航条-->
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
-                <a href="" class="swiper-slide cur">静态布局</a>
-                <a href="" class="swiper-slide">JavaScript</a>
-                <a href="" class="swiper-slide">PHP</a>
-                <a href="" class="swiper-slide">MySQL</a>
-                <a href="" class="swiper-slide">静态布局</a>
-                <a href="" class="swiper-slide">JavaScript</a>
-                <a href="" class="swiper-slide">PHP</a>
-                <a href="" class="swiper-slide">MySQL</a>
-            </div>
-        </div>
+        <swiper :options="swiperOption">
+            <swiper-slide v-for="t in tags" :key="t.id">
+                    {{t.title}}
+            </swiper-slide>
+        </swiper>
         <!--导航条结束-->
 
         <!--视频列表-->
         <ul id="videolist">
             <li>
-                <a href="" class="pic">
+                <router-link class="pic" to="/page">
                     <img src="../assets/5.jpg"/>
                     <span>08:26</span>
-                    <i class="iconfont icon-bofang"></i>
-                </a>
-                <a href="" class="title">精准投放与精准消除</a>
+                    <i class="glyphicon glyphicon-play-circle"></i>
+                </router-link>
+                <router-link class="title" to="/page">
+                    精准投放与精准消除
+                </router-link>
             </li>
             <li>
                 <a href="" class="pic">
@@ -109,17 +104,17 @@
         <!--视频列表结束-->
         <!--底部固定导航-->
         <ul id="bottom">
-            <li>
-                <a href="index.html">
-                    <i class="iconfont icon-shouyeshouye"></i>
+            <li class="cur">
+                <router-link to="/">
+                    <i class="glyphicon glyphicon-book"></i>
                     <span>首页</span>
-                </a>
+                </router-link>
             </li>
             <li class="cur">
-                <a href="video.html2">
-                    <i class="iconfont icon-icon02"></i>
+                <router-link to="/video">
+                    <i class="glyphicon glyphicon-facetime-video"></i>
                     <span>视频</span>
-                </a>
+                </router-link>
             </li>
         </ul>
         <!--底部固定导航结束-->
@@ -128,15 +123,26 @@
 
 <script>
     export default {
-        name: 'video',
-        watch:{
-
-        },
-        mounted(){
-
-        },
+        name: 'videoList',
         data () {
             return {
+                tags: [
+                    {id:1, title: 'PHP'},
+                    {id:2, title: 'LARAVEL'},
+                    {id:3, title: 'DJANGO'},
+                    {id:4, title: 'FLASK'},
+                    {id:5, title: 'GOLANG'},
+                    {id:6, title: 'REACT'},
+                ],
+                swiperOption: {
+                    slidesPerView: 3,
+                    spaceBetween: 30,
+                    freeMode: true,
+                    pagination: {
+                        el: '.swiper-pagination',
+                        clickable: true
+                    }
+                }
             }
         },
         methods:{
@@ -235,7 +241,7 @@
         top: 0;
         padding: 0 2%;
     }
-    #videolist li a.pic .iconfont.icon-bofang {
+    .glyphicon-play-circle {
         position: absolute;
         color: rgba(255, 255, 255, 1);
         left: 50%;;
@@ -263,19 +269,21 @@
         display: flex;
         background: #FFFFFF;
         margin: 0;
+        height: 53px;
     }
     #bottom li {
         width: 50%;
         box-sizing: border-box;
     }
-    #bottom li i.iconfont {
+    #bottom li i.glyphicon {
         color: #888;
         font-size: 6vw;
         display: block;
         text-align: center;
+        margin: 5px 0;
     }
     #bottom li span {
-        font-size: 2.6vw;
+        font-size: 3vw;
         display: block;
         text-align: center;
         color: #888;
@@ -283,7 +291,7 @@
     #bottom li.cur {
         /*background: #333;*/
     }
-    #bottom li.cur i.iconfont {
+    #bottom li.cur i.glyphicon {
         color: #333;
     }
     #bottom li.cur span {

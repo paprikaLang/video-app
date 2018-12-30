@@ -1,33 +1,31 @@
 <template>
   <div>
     <!--轮播图-->
-    <div class="swiper-container">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <a href=""><img src="../assets/4.jpg"/></a>
-        </div>
-        <div class="swiper-slide">
-          <a href=""><img src="../assets/5.jpg"/></a>
-        </div>
-      </div>
-      <!-- 如果需要分页器 -->
-      <div class="swiper-pagination"></div>
-    </div>
+    <swiper :options="swiperOption" ref="mySwiper">
+      <!-- slides -->
+      <swiper-slide v-for="v in slides" :key="v.id">
+        <router-link to="/video">
+          <img :src="v.path">
+        </router-link>
+      </swiper-slide>
+      <div class="swiper-pagination" slot="pagination"></div>
+      <div class="swiper-button-prev" slot="button-prev"></div>
+      <div class="swiper-button-next" slot="button-next"></div>
+    </swiper>
     <!--轮播图结束-->
-
     <!--推荐课程-->
     <h2>推荐视频</h2>
 
     <div id="recommend">
       <a href="">
         <img src="../assets/4.jpg" alt="" />
-        <i class="iconfont icon-bofang"></i>
+        <i class="glyphicon glyphicon-play-circle"></i>
         <span class="time">22:56</span>
         <span class="title">谷歌：没有扫描仪也能</span>
       </a>
       <a href="">
         <img src="../assets/5.jpg" alt="" />
-        <i class="iconfont icon-bofang"></i>
+        <i class="glyphicon glyphicon-play-circle"></i>
         <span class="time">22:56</span>
         <span class="title">谷歌：没有扫描仪也能</span>
       </a>
@@ -49,13 +47,13 @@
     <ul id="bottom">
       <li class="cur">
         <router-link to="/">
-          <i class="iconfont icon-shouyeshouye"></i>
+          <i class="glyphicon glyphicon-book"></i>
           <span>首页</span>
         </router-link>
       </li>
-      <li>
+      <li class="cur">
         <router-link to="/video">
-          <i class="iconfont icon-icon02"></i>
+          <i class="glyphicon glyphicon-facetime-video"></i>
           <span>视频</span>
         </router-link>
       </li>
@@ -69,7 +67,25 @@
         mounted(){
 
         },
-
+        data() {
+            return {
+                slides: [
+                    {id:1,path:'https://paprika-dev.b0.upaiyun.com/VZnvm7Gum43w2SEEdgQRyNADz4nGwHwVyXcJAJdI.jpeg'},
+                    {id:2,path:'https://paprika-dev.b0.upaiyun.com/Lpyx2fePqWnwRYPtDxvwA89K70tD54ywzMydiN2e.jpeg'},
+                    {id:3,path:'https://paprika-dev.b0.upaiyun.com/om3jkIT4nVK8WwYN8K9WyxEghHDk36WpEfgY8Ta3.jpeg'},
+                ],
+                swiperOption: {
+                    pagination: {
+                        el: '.swiper-pagination',
+                        clickable: true
+                    },
+                    navigation: {
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                    },
+                }
+            }
+        }
     }
 </script>
 
@@ -93,10 +109,7 @@
   }
   .swiper-container {
     width: 100%;
-    height: 300px;
-  }
-  .swiper-slide {
-    background: red;
+    height: 230px;
   }
   .swiper-container .swiper-slide a {
     display: block;
@@ -106,7 +119,7 @@
     /*overflow: hidden;*/
   }
   .swiper-container .swiper-slide img {
-    height: 300px;
+    height: 230px;
     width: 100%;
     position: absolute;
     left: 50%;
@@ -157,7 +170,7 @@
   #recommend a img {
     width: 100%;
   }
-  #recommend a .iconfont.icon-bofang {
+  #recommend a .glyphicon {
     position: absolute;
     color: rgba(255, 255, 255, 1);
     left: 50%;;
@@ -258,6 +271,25 @@
     width: 40%;
     height: 50%;
   }
+  .glyphicon-play-circle {
+    position: absolute;
+    color: rgba(255, 255, 255, 1);
+    left: 50%;;
+    top: 50%;
+    font-size: 8vw;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 50%;
+    line-height: 1em;
+  }
+  #videolist li a.title {
+    display: block;
+    text-align: center;
+    line-height: 2.5em;
+    font-size: 3.2vw;
+    color: #31343B;
+  }
+  /*视频列表结束*/
   /*底部固定导航*/
   #bottom {
     position: fixed;
@@ -267,20 +299,21 @@
     display: flex;
     background: #FFFFFF;
     margin: 0;
-    border-top: solid 1px #ddd;
+    height: 53px;
   }
   #bottom li {
     width: 50%;
     box-sizing: border-box;
   }
-  #bottom li i.iconfont {
+  #bottom li i.glyphicon {
     color: #888;
     font-size: 6vw;
     display: block;
     text-align: center;
+    margin: 5px 0;
   }
   #bottom li span {
-    font-size: 2.6vw;
+    font-size: 3vw;
     display: block;
     text-align: center;
     color: #888;
@@ -288,7 +321,7 @@
   #bottom li.cur {
     /*background: #333;*/
   }
-  #bottom li.cur i.iconfont {
+  #bottom li.cur i.glyphicon {
     color: #333;
   }
   #bottom li.cur span {
