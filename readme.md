@@ -1,4 +1,4 @@
-https://paprika-dev.b0.upaiyun.com/2hJx74mQ6XI89Vysw2wAIn3l4VMDOol1x29b3hMz.mp4
+又拍云 *.b0.upaiyun.com测试域名已经全部停止解析, 上传的文件和相关代码待后续更改
 
 https://laravideo.paprikalang.tk 
 
